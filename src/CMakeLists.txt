@@ -1,6 +1,10 @@
 # Setup sources
 set(PKM_SOURCES
 	player.cpp
+	pokemon.cpp
+	attack.cpp
+	Vector.tcc
+	item.cpp
     )
 
 # Build executable
