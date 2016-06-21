@@ -1,0 +1,1 @@
+/usr/bin/c++       CMakeFiles/pkm.dir/player.cpp.o  -o pkm -rdynamic -lm 
