@@ -1,0 +1,20 @@
+build/
+doc/
+*.autosave
+*~
+Debug/
+.cproject
+.project
+
+# OSX DS_Store files
+.DS_Store
+
+# QT-Creator project files
+CMakeLists.txt.user
+
+# Testlevel
+*.test.xml
+*.test.lvl
+
+# For Macs that directly use SDL header
+src/game/SDL_mixer.h
