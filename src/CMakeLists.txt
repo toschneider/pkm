@@ -9,6 +9,8 @@ set(PKM_SOURCES
 	Main.cpp
 	MainWindow.cpp
 	level.cpp
+	Camera.cpp
+	Vector.tcc
     )
 
 # Build executable

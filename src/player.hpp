@@ -5,10 +5,12 @@
 #include "pokemon.hpp"
 #include "item.hpp"
 #include <vector>
+#include <string>
 using std::vector;
 class Player
 {
 public:
+    Player();
     Player(Vector2f pos);
     ~Player();
     Player(SDL_Renderer* renderer,std::string name,std::string filename);

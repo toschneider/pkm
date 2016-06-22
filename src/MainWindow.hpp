@@ -10,13 +10,13 @@
 
 #include <string>
 #include <SDL.h>
-//#include "Level.hpp"
-//#include "Camera.hpp"
+#include "level.hpp"
+#include "Camera.hpp"
 #include "player.hpp"
 //#include "WorldProperty.hpp"
 #include <vector>
 using std::vector;
-
+class Level;
 
 
 /***
@@ -48,7 +48,7 @@ public:
 	/***
 	 * Sets the level to render.
 	 */
-//	void setLevel(Level* level);
+    void setLevel(Level* level);
 
 	/***
 	 * Gets the current SDL renderer
@@ -57,7 +57,7 @@ public:
 
 
 
-//	Camera & getCam();
+    Camera & getCam();
 
 private:
 
@@ -81,10 +81,10 @@ private:
 	int					m_height;
 
 	/// A pointer to a level object
-//	Level*				m_level;
+    Level*				m_level;
 
 	/// A Camera object
-//	Camera				m_camera;
+    Camera				m_camera;
 
 	double				m_renderTime;
 

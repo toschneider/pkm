@@ -16,8 +16,8 @@ int main(int argc, char** argv)
     MainWindow window("Pokemon", 800, 600);
     //Level level(window.getRenderer(), "../res/test2.lvl", window.getCam());
     Level level(window.getRenderer(), "../res/test2.lvl");
-    //Player player(window.getRenderer(), "../res/test.spr");
-    //level.setPlayer(&player);
-    //window.setLevel(&level);
+    Player player(window.getRenderer(),"fd", "../res/test.spr");
+    level.setPlayer(&player);
+    window.setLevel(&level);
 	window.run();
 }

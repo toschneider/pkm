@@ -20,7 +20,7 @@ MainWindow::MainWindow(std::string title, int w, int h)
 
 	/// Set pointer to NULL
 	m_renderer = 0;
-//	m_level = 0;
+    m_level = 0;
 	m_renderTime = 0;
 	/// Initialize SDL stuff
 	initSDL();
@@ -93,19 +93,19 @@ void MainWindow::run()
         {
             bul = 1;
         }
-        //m_camera.move(offset);
-//		m_level->updatePlayerPosition(moveX, jump, m_renderTime);
-//		m_level->checkAndResolveCollision();
+        m_camera.move(offset);
+        //m_level->updatePlayerPosition(moveX, jump, m_renderTime);
+        //m_level->checkAndResolveCollision();
 
 		// Clear screen
 		SDL_RenderClear(m_renderer);
 
-		// Render Level
-/*		if(m_level)
+        // Render Level
+        if(m_level)
 		{
-			m_level->render();
+            //m_level->render();
 		}
-*/	//SDL_Delay(10);
+    //SDL_Delay(10);
 
 		// Update screen
 		SDL_RenderPresent(m_renderer);
@@ -114,12 +114,12 @@ void MainWindow::run()
 	}
 
 }
-/*
+
 Camera & MainWindow::getCam()
 {
 	return m_camera;
 }
-*/
+
 SDL_Renderer* MainWindow::getRenderer()
 {
 	return m_renderer;
@@ -171,12 +171,12 @@ void MainWindow::initSDL()
 		std::cout << "SDL_image could not initialize! SDL_image Error: " << IMG_GetError() << std::endl;
 	}
 }
-/*
+
 void MainWindow::setLevel(Level* level)
 {
 	m_level = level;
 }
-*/
+
 
 
 

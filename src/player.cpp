@@ -4,6 +4,11 @@
 #include "item.hpp"
 #include <vector>
 using std::vector;
+Player::Player()
+{
+
+}
+
 Player::Player(Vector2f pos)
 {
     m_pos = pos;
