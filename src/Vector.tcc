@@ -9,8 +9,7 @@
 #include <cmath>
 #include "Vector.hpp"
 
-namespace jumper
-{
+
 template <typename T>
 const float Vector2<T>::m_epsilon = 0.001;
 
@@ -128,7 +127,7 @@ void Vector2<T>::setY(T y)
 }
 
 template <typename T>
-std::ostream& operator<<(std::ostream& stream, const jumper::Vector2<T>& vec)
+std::ostream& operator<<(std::ostream& stream, const Vector2<T>& vec)
 {
     stream << "(" << vec.x() << "|" << vec.y() << ")";
     return stream;
@@ -149,4 +148,3 @@ void Vector2<T>::operator-=(const Vector2<T>& other)
     m_y -= other.m_y;
 }
 
-} /* namespace jumper */

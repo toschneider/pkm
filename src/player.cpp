@@ -3,34 +3,34 @@
 #include "pokemon.hpp"
 #include "item.hpp"
 #include <vector>
-
+using std::vector;
 Player::Player(Vector2f pos)
 {
     m_pos = pos;
 
 }
 
-Player::Player(std::string name,std::string filename)
+Player::Player(SDL_Renderer* player,std::string name,std::string filename)
 {
     m_name = name;
 }
 
-Vector<Pokemon*> getPokemons()
+vector<Pokemon*> Player::getPokemons()
 {
     return m_pokemons;
 }
 
-void setPokemon(Pokemon *pkm, int pos)
+void Player::setPokemon(Pokemon *pkm, int pos)
 {
 
 }
 
-Vector<Item*> getItems()
+vector<Item*> Player::getItems()
 {
 
 }
 
-void setItem(Item *item)
+void Player::setItem(Item *item)
 {
 
 }

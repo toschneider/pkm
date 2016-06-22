@@ -5,6 +5,10 @@ set(PKM_SOURCES
 	attack.cpp
 	Vector.tcc
 	item.cpp
+	game.cpp
+	Main.cpp
+	MainWindow.cpp
+	level.cpp
     )
 
 # Build executable

@@ -10,8 +10,7 @@
 
 #include <ostream>
 
-namespace jumper
-{
+
 /**
  * A class to represent a 2-dimensional vector of scalars
  */
@@ -129,7 +128,7 @@ public:
 
     template <typename S>
     friend std::ostream& operator<<(std::ostream& stream,
-                                    const jumper::Vector2<S>& vec);
+                                    const Vector2<S>& vec);
 
 private:
     const static float m_epsilon;
@@ -144,7 +143,7 @@ private:
 typedef Vector2<float> Vector2f;
 typedef Vector2<int> Vector2i;
 
-} /* namespace jumper */
+
 
 #include "Vector.tcc"
 
