@@ -1,14 +1,17 @@
 #ifndef LEVEL_HPP
 #define LEVEL_HPP
 #include "player.hpp"
+#include "Camera.hpp"
 #include <vector>
+#include <string>
+using std::string;
 using std::vector;
 class Player;
 class MainWindow;
 class Level
 {
 public:
-    Level(SDL_Renderer *renderer,std::string filename);
+    Level(SDL_Renderer *renderer,Camera &cam,std::string filename);
     void setPlayer(Player* player);
 
 

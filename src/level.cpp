@@ -1,7 +1,7 @@
 #include "level.hpp"
 #include <string>
 #include "player.hpp"
-Level::Level(SDL_Renderer* renderer,std::string filename)
+Level::Level(SDL_Renderer* renderer,Camera &cam,std::string filename)
 {
 }
 
