@@ -6,19 +6,20 @@
 #include "item.hpp"
 #include <vector>
 #include <string>
+#include "AnimatedRenderable.hpp"
 using std::vector;
-class Player
+class Player: public AnimatedRenderable
 {
 public:
-    Player();
-    Player(Vector2f pos);
     ~Player();
     Player(SDL_Renderer* renderer,std::string name,std::string filename);
     vector<Pokemon*> getPokemons();
     void setPokemon(Pokemon *pkm, int pos);
-
     vector<Item*> getItems();
     void setItem(Item *item);
+    void render();
+
+
 
 
     vector<Pokemon*> m_pokemons;

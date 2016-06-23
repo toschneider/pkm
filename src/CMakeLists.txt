@@ -11,6 +11,9 @@ set(PKM_SOURCES
 	level.cpp
 	Camera.cpp
 	Vector.tcc
+AnimatedRenderable.cpp
+Renderable.cpp
+StaticRenderable.cpp
     )
 
 # Build executable

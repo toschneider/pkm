@@ -100,6 +100,7 @@ void MainWindow::run()
 		// Clear screen
 		SDL_RenderClear(m_renderer);
 
+        m_level->m_player->render();
         // Render Level
         if(m_level)
 		{
