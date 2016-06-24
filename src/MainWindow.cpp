@@ -38,10 +38,7 @@ void MainWindow::run()
 	const Uint8* currentKeyStates;
 	Vector2i offset;
 	int moveX;
-	int moveY;
-    int bul = 0;
-    int lbul = 0;
-	bool jump;
+    int moveY;
 	// Start main loop and event handling
 	while(!quit && m_renderer)
 	{
@@ -50,10 +47,7 @@ void MainWindow::run()
 		offset.setY(0);
 		moveX = 0;
 		moveY = 0;
-        lbul = bul;
-        bul = 0;
-		jump = false;
-		// Process events, detect quit signal for window closing
+        // Process events, detect quit signal for window closing
 		while(SDL_PollEvent(&e))
 		{
 			if(e.type == SDL_QUIT)
@@ -64,14 +58,14 @@ void MainWindow::run()
 
 		currentKeyStates = SDL_GetKeyboardState( NULL );
 
-        /*if( currentKeyStates[ SDL_SCANCODE_UP ] )
+        if( currentKeyStates[ SDL_SCANCODE_UP ] )
 		{
 			moveY = -1;
 		}
 		if( currentKeyStates[ SDL_SCANCODE_DOWN ] )
 		{
 			moveY = 1;
-        }*/
+        }
 		if( currentKeyStates[ SDL_SCANCODE_LEFT ] )
 		{
 			moveX = -1;
@@ -80,21 +74,8 @@ void MainWindow::run()
 		{
 			moveX = 1;
 		}
-		if( currentKeyStates[ SDL_SCANCODE_SPACE ])
-		{
-			jump = true;
-			//std::cout << "jump!" << std::endl;
-		}
-        if(currentKeyStates[ SDL_SCANCODE_W ])
-        {
-            bul = -1;
-        }
-        if(currentKeyStates[ SDL_SCANCODE_S ])
-        {
-            bul = 1;
-        }
         m_camera.move(offset);
-        //m_level->updatePlayerPosition(moveX, jump, m_renderTime);
+        m_level->updatePlayerPosition(moveX, moveY, m_renderTime);
         //m_level->checkAndResolveCollision();
 
 		// Clear screen
@@ -104,7 +85,7 @@ void MainWindow::run()
         // Render Level
         if(m_level)
 		{
-            //m_level->render();
+            m_level->render();
 		}
     //SDL_Delay(10);
 

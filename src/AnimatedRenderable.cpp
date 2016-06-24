@@ -20,7 +20,8 @@ AnimatedRenderable::AnimatedRenderable(SDL_Renderer* renderer, std::string filen
 	{
 		ifs >> textureFileName >> m_frameWidth >> m_frameHeight >> m_numFrames;
         textureFileName = "../res/" + textureFileName;
-        m_texture = loadTexture(textureFileName);
+        const char white = 255;
+        m_texture = loadTexture(textureFileName,white,white,white);
 	}
 	else
 	{
@@ -37,6 +38,36 @@ AnimatedRenderable::AnimatedRenderable(SDL_Renderer* renderer, std::string filen
 
 AnimatedRenderable::~AnimatedRenderable() {}
 
+void AnimatedRenderable::direction(int dir)
+{
+
+    //lor
+    if(dir == 10)
+    {
+        //down 0
+        m_sourceRect.y = m_frameHeight * 2;
+    }
+    else if(dir == -10)
+    {
+        //up 3
+        m_sourceRect.y = m_frameHeight * 1;
+    }
+    else if(dir == 1)
+    {
+        //right 2
+        m_sourceRect.y = m_frameHeight * 0;
+    }
+    else if(dir == -1)
+    {
+        //left 1
+        m_sourceRect.y = m_frameHeight * 3;
+    }
+    else
+    {
+        //no movement 0
+        m_sourceRect.y = m_frameHeight * 3;
+    }
+}
 
 void AnimatedRenderable::nextFrame()
 {

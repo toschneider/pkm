@@ -44,7 +44,7 @@ public:
 	 */
 	void nextFrame();
 
-
+    void direction(int dir);
 
 	///	Number of frames in the animation
 	int				m_numFrames;

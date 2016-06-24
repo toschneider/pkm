@@ -14,6 +14,8 @@ set(PKM_SOURCES
 AnimatedRenderable.cpp
 Renderable.cpp
 StaticRenderable.cpp
+SparseMatrix.cpp
+SparseVector.cpp
     )
 
 # Build executable

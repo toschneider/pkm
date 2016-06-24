@@ -1,10 +1,12 @@
-#include "player.hpp"
+
 #include "Vector.hpp"
 #include "pokemon.hpp"
 #include "item.hpp"
 #include <vector>
 #include <stdexcept>
 #include <iostream>
+#include "player.hpp"
+
 using std::vector;
 
 
@@ -24,15 +26,24 @@ void Player::setPokemon(Pokemon *pkm, int pos)
 {
 
 }
-
+/*
 vector<Item*> Player::getItems()
 {
 
 }
-
+*/
 void Player::setItem(Item *item)
 {
 
+}
+Vector2f Player::position()
+{
+    return m_pos;
+}
+
+void Player::setPosition(Vector2f pos)
+{
+    m_pos = pos;
 }
 
 void Player::render()
