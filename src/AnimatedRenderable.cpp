@@ -6,10 +6,12 @@
  */
 
 #include "AnimatedRenderable.hpp"
-
+#include <vector>
 #include <fstream>
 
-
+using std::string;
+using std::cout;
+using std::endl;
 
 AnimatedRenderable::AnimatedRenderable(SDL_Renderer* renderer, std::string filename)
 	: Renderable(renderer), m_numFrames(0), m_currentFrame(0), m_frameWidth(0), m_frameHeight(0)
@@ -22,7 +24,17 @@ AnimatedRenderable::AnimatedRenderable(SDL_Renderer* renderer, std::string filen
         textureFileName = "../res/" + textureFileName;
         const char white = 255;
         m_texture = loadTexture(textureFileName,white,white,white);
-	}
+        string arr[4] = {"up","down","left","right"};
+        for(int i = 0; i < 4; i++)
+        {
+            for(int j = 0; j < 4; j++)
+            {
+
+                string tex = textureFileName.substr (0,textureFileName.length()-4)+"_" + arr[i]+(std::to_string(j))+".png";
+                m_textures[i][j] = loadTexture(tex,white,white,white);
+            }
+        }
+    }
 	else
 	{
 		std::cout << "Unable to open file " << filename << std::endl;

@@ -13,6 +13,7 @@ using std::vector;
 Player::Player(SDL_Renderer* renderer,std::string name,std::string filename)
     : AnimatedRenderable(renderer, filename)
 {
+    m_dir = 0;
     m_name = name;
     m_pos = Vector2f(0,0);
 }
@@ -46,6 +47,16 @@ void Player::setPosition(Vector2f pos)
     m_pos = pos;
 }
 
+void Player::setDir(int dir)
+{
+    m_dir = dir;
+}
+
+int Player::dir()
+{
+    return m_dir;
+}
+
 void Player::render()
 {
     if (m_numFrames == 0)
@@ -59,9 +70,8 @@ void Player::render()
     target.y = m_pos.y();
     target.w = m_frameWidth;
     target.h = m_frameHeight;
-
     SDL_RenderCopyEx(
-            getRenderer(), m_texture, &m_sourceRect, &target, 0, NULL, SDL_FLIP_NONE);
+            getRenderer(), m_textures[m_dir][m_currentFrame], &m_sourceRect, &target, 0, NULL, SDL_FLIP_NONE);
 }
 
 Player::~Player()

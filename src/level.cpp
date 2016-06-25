@@ -359,7 +359,7 @@ void Level::checkAndResolveCollision()
 void Level::updatePlayerPosition(int moveX, int moveY, double dt)
 {
     int dir = 0;
-    if(moveX != 0)
+    /*if(moveX != 0)
     {
         dir = moveX * 10;
     }
@@ -370,13 +370,41 @@ void Level::updatePlayerPosition(int moveX, int moveY, double dt)
     else
     {
         dir = 0;
+    }*/
+    if(moveX == 1)
+    {
+        dir = 3;
+        m_player->setDir(dir);
+    }
+    else if( moveX == -1)
+    {
+        dir = 2;
+        m_player->setDir(dir);
+    }
+    else if(moveY == 1)
+    {
+        dir = 1;
+        m_player->setDir(dir);
+    }
+    else if(moveY == -1)
+    {
+        dir = 0;
+        m_player->setDir(dir);
+    }
+    if(moveX != 0 || moveY !=0)
+    {
+        m_player->m_currentFrame = m_player->m_currentFrame+1;
+        m_player->m_currentFrame = m_player->m_currentFrame%m_player->m_numFrames;
+    }
+    else
+    {
+        m_player->m_currentFrame = 0;
     }
 
-
-    if(dt != 0 && dir != 0)
+    if(dt != 0 && (moveX!=0||moveY!=0))
     {
-        m_player->direction(dir);
-        m_player->nextFrame();
+
+    //    m_player->nextFrame();
 
 	/// Compute the movement according to external force from user
 	

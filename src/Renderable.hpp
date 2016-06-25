@@ -8,6 +8,7 @@
 #include <SDL.h>
 #include <string>
 #include "Camera.hpp"
+#include <vector>
 
 
 class Renderable
@@ -69,6 +70,8 @@ protected:
 
     /// A texture object
     SDL_Texture*		m_texture;
+
+    SDL_Texture *m_textures[4][4];
 
 	/// Source rect in the texture
 	SDL_Rect 			m_sourceRect;

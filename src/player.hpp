@@ -20,7 +20,8 @@ public:
     void render();
     Vector2f position();
     void setPosition(Vector2f pos);
-
+    void setDir(int dir);
+    int dir();
 
 private:
 
@@ -28,6 +29,7 @@ private:
     vector<Item*> m_items;
     Vector2f m_pos;
     std::string m_name;
+    int m_dir;
 };
 
 #endif // PLAYER_HPP
