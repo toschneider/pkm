@@ -10,7 +10,7 @@
 using std::vector;
 
 
-Player::Player(SDL_Renderer* renderer,std::string name,std::string filename)
+Player::Player(SDL_Renderer* renderer,std::string name,std::string filename,std::string gender)
     : AnimatedRenderable(renderer, filename)
 {
     m_dir = 0;
@@ -55,6 +55,11 @@ void Player::setDir(int dir)
 int Player::dir()
 {
     return m_dir;
+}
+
+std::string Player::gender()
+{
+    return m_gender;
 }
 
 void Player::render()

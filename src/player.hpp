@@ -12,7 +12,7 @@ class Player: public AnimatedRenderable
 {
 public:
     ~Player();
-    Player(SDL_Renderer* renderer,std::string name,std::string filename);
+    Player(SDL_Renderer* renderer,std::string name,std::string filename,std::string gender);
     vector<Pokemon*> getPokemons();
     void setPokemon(Pokemon *pkm, int pos);
     //vector<Item*> getItems();
@@ -22,6 +22,7 @@ public:
     void setPosition(Vector2f pos);
     void setDir(int dir);
     int dir();
+    std::string gender();
 
 private:
 
@@ -30,6 +31,7 @@ private:
     Vector2f m_pos;
     std::string m_name;
     int m_dir;
+    std::string m_gender;
 };
 
 #endif // PLAYER_HPP
