@@ -62,15 +62,15 @@ void MainWindow::run()
 		{
 			moveY = -1;
 		}
-		if( currentKeyStates[ SDL_SCANCODE_DOWN ] )
+        else if( currentKeyStates[ SDL_SCANCODE_DOWN ] )
 		{
 			moveY = 1;
         }
-		if( currentKeyStates[ SDL_SCANCODE_LEFT ] )
+        else if( currentKeyStates[ SDL_SCANCODE_LEFT ] )
 		{
 			moveX = -1;
 		}
-		if( currentKeyStates[ SDL_SCANCODE_RIGHT ] )
+        else if( currentKeyStates[ SDL_SCANCODE_RIGHT ] )
 		{
 			moveX = 1;
 		}

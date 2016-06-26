@@ -101,6 +101,8 @@ public:
 	Camera  			m_camera;
 
 	SparseMatrix		m_tiles;
+    ///Collision Matrix
+    SparseMatrix        m_col;
 
 	Player*				m_player;
 
