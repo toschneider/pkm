@@ -35,10 +35,14 @@ Level::Level(SDL_Renderer* renderer, std::string filename, Camera & camera) : St
 
 	// Read meta data from level file
 	std::ifstream in(filename.c_str());
+    std::ifstream colin(filename.substr(0,filename.length()-4)+".col");
 	std::string texFileName;
 
 	int ir, ig, ib;
-
+    if(!colin.good())
+    {
+        std::cout << "Unable to open colin " << filename.substr(0,filename.length()-4)+".col" << std::endl;
+    }
 	if(in.good())
 	{
 		in >> texFileName;
@@ -53,7 +57,7 @@ Level::Level(SDL_Renderer* renderer, std::string filename, Camera & camera) : St
 
 	SparseMatrix tiles(m_levelHeight, m_levelWidth);
 	m_tiles = tiles;
-
+    m_col = tiles;
 	// Cast keying colors manually!
 	m_keyR = (unsigned char)ir;
 	m_keyG = (unsigned char)ib;
@@ -81,8 +85,25 @@ Level::Level(SDL_Renderer* renderer, std::string filename, Camera & camera) : St
 	}
 
 	in.close();
-}
+    std::cout<<"colin \n"<<std::endl;
+    for(int i = 0; i < m_levelHeight; i++)
+    {
+        for(int j = 0; j < m_levelWidth; j++)
+        {
+            int colVAL;
+            colin >> colVAL;
+            if(colVAL!=0)
+            {
+                //std::cout<<"col \n"<<std::endl;
+            }
+            m_col.insert(i, j, colVAL);
 
+        }
+    }
+
+    colin.close();
+
+}
 void Level::setPlayer(Player* player)
 {
 	m_player = player;
@@ -391,15 +412,7 @@ void Level::updatePlayerPosition(int moveX, int moveY, double dt)
         dir = 0;
         m_player->setDir(dir);
     }
-    if(moveX != 0 || moveY !=0)
-    {
-        m_player->m_currentFrame = m_player->m_currentFrame+1;
-        m_player->m_currentFrame = m_player->m_currentFrame%m_player->m_numFrames;
-    }
-    else
-    {
-        m_player->m_currentFrame = 0;
-    }
+
 
     if(dt != 0 && (moveX!=0||moveY!=0))
     {
@@ -412,10 +425,35 @@ void Level::updatePlayerPosition(int moveX, int moveY, double dt)
     Vector2f pos = m_player->position();
 
     pos += m*4*dt;
-
-
-    m_player->setPosition(pos);
-    
+    //std::cout<<"before m_col \n"<<std::endl;
+    /*std::cout<<(pos.y()+m_player->m_frameHeight)/16<<" "<< (pos.x()+m_player->m_frameWidth)/16 <<" \n"<<std::endl;
+    std::cout<<"m_col "<<m_col[(pos.y()+m_player->m_frameHeight)/16][(pos.x()+m_player->m_frameWidth)/16]<<std::endl;
+    std::cout<<"m_tiles "<<m_tiles[(pos.y()+m_player->m_frameHeight)/16][(pos.x()+m_player->m_frameWidth)/16]<<std::endl;
+    std::cout<<"tile maße  "<<  m_tileWidth <<" "<< m_tileHeight<<std::endl;
+*/
+    if(((m_col[(pos.y()+m_player->m_frameHeight-2)/m_tileHeight][(pos.x()+m_player->m_frameWidth-10)/m_tileWidth])==0)&&
+            (m_col[(pos.y()+(m_player->m_frameHeight/2))/m_tileHeight][(pos.x()+m_player->m_frameWidth-10)/m_tileWidth]==0)&&
+            (m_col[(pos.y()+10)/m_tileHeight][(pos.x()+m_player->m_frameWidth-10)/m_tileWidth]==0)&&
+            (m_col[(pos.y()+m_player->m_frameHeight-10)/m_tileHeight][(pos.x()+10)/m_tileWidth]==0)&&
+            (m_col[(pos.y()+m_player->m_frameHeight/2)/m_tileHeight][(pos.x()+10)/m_tileWidth]==0)&&
+            (m_col[(pos.y()+10)/m_tileHeight][(pos.x()+10)/m_tileWidth]==0))
+    {
+        m_player->setPosition(pos);
+        if(moveX != 0 || moveY !=0)
+        {
+            m_player->m_currentFrame = m_player->m_currentFrame+1;
+            m_player->m_currentFrame = m_player->m_currentFrame%m_player->m_numFrames;
+        }
+        else
+        {
+            m_player->m_currentFrame = 0;
+        }
+    }
+    else
+    {
+        m_player->m_currentFrame = 0;
+    }
+    //std::cout<<"after m_col \n"<<std::endl;
     //(*m_player).physics().setVelocity(m_player->physics().velocity()+ mx);
 
 	// Add jumping momentum
