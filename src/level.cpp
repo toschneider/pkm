@@ -431,12 +431,13 @@ void Level::updatePlayerPosition(int moveX, int moveY, double dt)
     std::cout<<"m_tiles "<<m_tiles[(pos.y()+m_player->m_frameHeight)/16][(pos.x()+m_player->m_frameWidth)/16]<<std::endl;
     std::cout<<"tile maße  "<<  m_tileWidth <<" "<< m_tileHeight<<std::endl;
 */
+    std::cout<<pos.x()/m_tileWidth<<" "<<pos.y()/m_tileHeight<<std::endl;
     if(((m_col[(pos.y()+m_player->m_frameHeight-2)/m_tileHeight][(pos.x()+m_player->m_frameWidth-10)/m_tileWidth])==0)&&
             (m_col[(pos.y()+(m_player->m_frameHeight/2))/m_tileHeight][(pos.x()+m_player->m_frameWidth-10)/m_tileWidth]==0)&&
             (m_col[(pos.y()+10)/m_tileHeight][(pos.x()+m_player->m_frameWidth-10)/m_tileWidth]==0)&&
             (m_col[(pos.y()+m_player->m_frameHeight-10)/m_tileHeight][(pos.x()+10)/m_tileWidth]==0)&&
             (m_col[(pos.y()+m_player->m_frameHeight/2)/m_tileHeight][(pos.x()+10)/m_tileWidth]==0)&&
-            (m_col[(pos.y()+10)/m_tileHeight][(pos.x()+10)/m_tileWidth]==0))
+            (m_col[(pos.y()+10)/m_tileHeight][(pos.x()+10)/m_tileWidth]==0)&&(pos.x()>=0)&&(pos.y()>=0)&&(pos.x()/m_tileWidth<m_levelWidth-2)&&(pos.y()/m_tileHeight<m_levelHeight-2))
     {
         m_player->setPosition(pos);
         if(moveX != 0 || moveY !=0)
